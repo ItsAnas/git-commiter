@@ -9,7 +9,7 @@ import (
 
 // ParseCommitMessage fekopkp
 func parseCommitMessage(commitType string, input string) string {
-	return fmt.Sprintf("\"%s: %s\"", commitType, input)
+	return fmt.Sprintf("%s: %s", commitType, input)
 }
 
 // CommitMessage should
