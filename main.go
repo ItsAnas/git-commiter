@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 
+	"github.com/ItsAnas/git-commit-configurator/commiter"
 	"github.com/manifoldco/promptui"
 )
 
@@ -21,12 +22,8 @@ func askForCommit() bool {
 	return result == "Yes"
 }
 
-func parseCommitMessage(input string) string {
-	return fmt.Sprintf("\"feat(git): %s\"", input)
-}
-
 func commitMessage(input string) bool {
-	formattedMessage := parseCommitMessage(input)
+	formattedMessage := commiter.ParseCommitMessage(input)
 	myArguments := []string{"commit", "-m", formattedMessage}
 	output, err := exec.Command("git", myArguments...).CombinedOutput()
 	if err != nil {
@@ -39,6 +36,7 @@ func commitMessage(input string) bool {
 }
 
 func main() {
+	fmt.Println("It works ! 2")
 	if askForCommit() {
 		commitMessage("add error message when commit fail")
 	}
