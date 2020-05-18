@@ -8,13 +8,13 @@ import (
 )
 
 // ParseCommitMessage fekopkp
-func parseCommitMessage(input string) string {
-	return fmt.Sprintf("\"feat(git): %s\"", input)
+func parseCommitMessage(commitType string, input string) string {
+	return fmt.Sprintf("\"%s: %s\"", commitType, input)
 }
 
 // CommitMessage should
-func CommitMessage(input string) bool {
-	formattedMessage := parseCommitMessage(input)
+func CommitMessage(commitType string, input string) bool {
+	formattedMessage := parseCommitMessage(commitType, input)
 	myArguments := []string{"commit", "-m", formattedMessage}
 	output, err := exec.Command("git", myArguments...).CombinedOutput()
 	if err != nil {
