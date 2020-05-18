@@ -30,6 +30,7 @@ func commitMessage(input string) bool {
 	myArguments := []string{"commit", "-m", formattedMessage}
 	output, err := exec.Command("git", myArguments...).CombinedOutput()
 	if err != nil {
+		log.Fatal("Error during commit")
 		os.Stderr.WriteString(err.Error())
 		return false
 	}
@@ -39,6 +40,6 @@ func commitMessage(input string) bool {
 
 func main() {
 	if askForCommit() {
-		commitMessage("ask the user if he wants to commit")
+		commitMessage("add error message when commit fail")
 	}
 }
