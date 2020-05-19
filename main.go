@@ -40,6 +40,7 @@ func main() {
 			os.Exit(3)
 		}
 		jsonMapping.CreateSample()
+		configPath, _ = commitConfig.FindCommitConfig(gitRootDir)
 	}
 
 	if interact.AskForCommit() {
