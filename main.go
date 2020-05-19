@@ -3,10 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/ItsAnas/git-commit-configurator/commitConfig"
-	"github.com/ItsAnas/git-commit-configurator/commiter"
 	"github.com/ItsAnas/git-commit-configurator/interact"
 	"github.com/ItsAnas/git-commit-configurator/jsonMapping"
 )
@@ -34,9 +32,6 @@ type Social struct {
 }
 
 func main() {
-	config := jsonMapping.DecodeJsonConfig(".commit.json")
-	jsonMapping.EncodeJsonConfig(config)
-
 	gitRootDir := commitConfig.GetGitRootDir()
 	configPath, err := commitConfig.FindCommitConfig(gitRootDir)
 
@@ -44,13 +39,11 @@ func main() {
 		log.Fatal("Cannot find .commit.json")
 	}
 
-	fmt.Println(configPath)
-	os.Exit(0)
-
 	if interact.AskForCommit() {
-		commitType := interact.AskCommitType()
-		commitMessage := interact.AskMessage()
-		commiter.CommitMessage(commitType, commitMessage)
+		config := jsonMapping.DecodeJsonConfig(configPath)
+		commitType := interact.AskCommitType(config)
+		fmt.Printf(commitType)
+		//	commitMessage := interact.AskMessage()
+		//	commiter.CommitMessage(commitType, commitMessage)
 	}
-
 }

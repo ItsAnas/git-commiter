@@ -2,9 +2,11 @@ package interact
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"unicode/utf8"
 
+	"github.com/ItsAnas/git-commit-configurator/jsonMapping"
 	"github.com/manifoldco/promptui"
 )
 
@@ -21,17 +23,27 @@ func AskForCommit() bool {
 	return result == "Yes"
 }
 
+func getDescriptions(config jsonMapping.CommitConfig) []string {
+	var res []string
+	for _, rule := range config.Rules {
+		res = append(res, rule.Description)
+	}
+	return res
+}
+
 // AskForCommit wesh
-func AskCommitType() string {
+func AskCommitType(config jsonMapping.CommitConfig) string {
+	descriptions := getDescriptions(config)
 	prompt := promptui.Select{
 		Label: "Type of commit",
-		Items: []string{"feat", "fix", "ci", "tests", "doc"},
+		Items: descriptions,
 	}
-	_, result, err := prompt.Run()
+	index, _, err := prompt.Run()
+	fmt.Printf("value choosen is: %d", index)
 	if err != nil {
 		log.Fatalf("Prompt failed %v\n", err)
 	}
-	return result
+	return config.Rules[index].Prefix
 }
 
 // AskMessage is blabla
