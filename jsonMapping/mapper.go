@@ -19,15 +19,15 @@ type CommitConfig struct {
 	Rules       []PrefixRule
 }
 
-func EncodeJsonConfig(config CommitConfig) bool {
+func EncodeJsonConfig(config CommitConfig) []byte {
 	var jsonData []byte
 	jsonData, err := json.MarshalIndent(config, "", "    ")
 	if err != nil {
 		log.Println(err)
-		return false
+		return nil
 	}
 	fmt.Println(string(jsonData))
-	return true
+	return jsonData
 }
 
 func DecodeJsonConfig(input string) CommitConfig {
@@ -51,4 +51,44 @@ func DecodeJsonConfig(input string) CommitConfig {
 		log.Println(err)
 	}
 	return config
+}
+
+func CreateSample() bool {
+	config := CommitConfig{
+		Name:        "My Config",
+		Description: "Hey this is my config for commit",
+		Rules: []PrefixRule{
+			PrefixRule{
+				Prefix:      "feat",
+				Description: "feat: Implement new feature"},
+			PrefixRule{
+				Prefix:      "doc",
+				Description: "doc: writing doc",
+			},
+			PrefixRule{
+				Prefix:      "fix",
+				Description: "fix: fix bug",
+			},
+		},
+	}
+
+	bytes := EncodeJsonConfig(config)
+
+	if bytes == nil {
+		log.Fatal("Cannot decode config. Please provide an issue on github")
+	}
+
+	f, err := os.Create(".commit.json")
+	if err != nil {
+		log.Fatal("Cannot create .commit.json")
+	}
+
+	defer f.Close()
+
+	_, err = f.Write(bytes)
+	if err != nil {
+		log.Fatal("Cannot create .commit.json")
+	}
+
+	return true
 }

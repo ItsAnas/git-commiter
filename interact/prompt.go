@@ -46,6 +46,19 @@ func AskCommitType(config jsonMapping.CommitConfig) string {
 	return config.Rules[index].Prefix
 }
 
+// AskForCommit wesh
+func AskForCreate() bool {
+	prompt := promptui.Select{
+		Label: "No .commit.json found. Do you want to create one ? [Yes/No]",
+		Items: []string{"Yes", "No"},
+	}
+	_, result, err := prompt.Run()
+	if err != nil {
+		log.Fatalf("Prompt failed %v\n", err)
+	}
+	return result == "Yes"
+}
+
 // AskMessage is blabla
 func AskMessage() string {
 
