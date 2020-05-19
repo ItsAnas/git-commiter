@@ -1,0 +1,18 @@
+{
+    "Name": "My Config 2",
+    "Description": "Hey this is my config for commit",
+    "Rules": [
+        {
+            "Prefix": "feat",
+            "Description": "feat: Implement new feature"
+        },
+        {
+            "Prefix": "doc",
+            "Description": "doc: writing doc"
+        },
+        {
+            "Prefix": "fix",
+            "Description": "fix: fix bug"
+        }
+    ]
+}
