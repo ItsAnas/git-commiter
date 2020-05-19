@@ -10,7 +10,7 @@ func GetGitRootDir() string {
 	myArguments := []string{"rev-parse", "--show-toplevel"}
 	output, err := exec.Command("git", myArguments...).CombinedOutput()
 	if err != nil {
-		log.Fatal("Cannot find git root")
+		log.Fatal("Cannot find git repository")
 	}
 	return string(output)
 }
