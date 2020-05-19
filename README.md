@@ -24,8 +24,35 @@ go install .
  git add foo
  git-commit-configurator
 ```
+<img src="https://github.com/ItsAnas/git-commit-configurator/raw/master/img/demo-commit.gif"/>
 
 ## Custom rules
 
-Soon 🔜:
-> At the end of the project you should be able to use a file .commit.json that we will read by the program to let you commit correctly with a description of each header
+```json
+{
+    "Name": "My commit config",
+    "Description": "Use this field to add some metadata",
+    "Rules": [
+        {
+            "Prefix": "feat",
+            "Description": "feat: Implement new feature"
+        },
+        {
+            "Prefix": "doc",
+            "Description": "doc: writing doc"
+        },
+        {
+            "Prefix": "fix",
+            "Description": "fix: fix bug"
+        },
+        {
+            "Prefix": "style",
+            "Description": "style: change something without modyfing feature"
+        },
+        {
+            "Prefix": "ci",
+            "Description": "ci: improve ci"
+        }
+    ]
+}
+```
