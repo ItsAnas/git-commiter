@@ -26,7 +26,6 @@ func EncodeJsonConfig(config CommitConfig) []byte {
 		log.Println(err)
 		return nil
 	}
-	fmt.Println(string(jsonData))
 	return jsonData
 }
 
@@ -90,5 +89,6 @@ func CreateSample() bool {
 		log.Fatal("Cannot create .commit.json")
 	}
 
+	fmt.Printf("Succesfully created .commit.json file")
 	return true
 }

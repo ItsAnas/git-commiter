@@ -15,6 +15,10 @@
             "Description": "fix: fix bug"
         },
         {
+            "Prefix": "style",
+            "Description": "style: change something without modyfing feature"
+        },
+        {
             "Prefix": "ci",
             "Description": "ci: improve ci"
         }
