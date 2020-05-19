@@ -28,6 +28,8 @@ go install .
 
 ## Custom rules
 
+### Conventional commit
+
 ```json
 {
     "Name": "My commit config",
@@ -52,6 +54,52 @@ go install .
         {
             "Prefix": "ci",
             "Description": "ci: improve ci"
+        }
+    ]
+}
+```
+
+### Modifier style
+
+```json
+{
+    "Name": "My commit config",
+    "Description": "Use this field to add some metadata",
+    "Rules": [
+        {
+            "Prefix": "[ADD]",
+            "Description": "[ADD]: Add some code"
+        },
+        {
+            "Prefix": "[UPT]",
+            "Description": "[UPT]: Update or improve some code"
+        },
+        {
+            "Prefix": "[FIX]",
+            "Description": "[FIX]: fix bug"
+        }
+    ]
+}
+```
+
+### Why not emojis ?
+
+```json
+{
+    "Name": "My commit config",
+    "Description": "Use this field to add some metadata",
+    "Rules": [
+        {
+            "Prefix": "✨",
+            "Description": "✨: New feature"
+        },
+        {
+            "Prefix": "🐛",
+            "Description": "🐛: Fix bug"
+        },
+        {
+            "Prefix": "📚",
+            "Description": "📚: Add some documentation"
         }
     ]
 }
