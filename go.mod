@@ -1,4 +1,4 @@
-module github.com/ItsAnas/git-commit-configurator
+module github.com/ItsAnas/git-commiter
 
 go 1.14
 

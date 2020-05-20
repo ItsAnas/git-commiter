@@ -6,7 +6,7 @@ import (
 	"log"
 	"unicode/utf8"
 
-	"github.com/ItsAnas/git-commit-configurator/jsonMapping"
+	"github.com/ItsAnas/git-commiter/jsonMapping"
 	"github.com/manifoldco/promptui"
 )
 
@@ -49,7 +49,7 @@ func AskCommitType(config jsonMapping.CommitConfig) string {
 // AskForCommit wesh
 func AskForCreate() bool {
 	prompt := promptui.Select{
-		Label: "No .commit.json found. Do you want to create one ? [Yes/No]",
+		Label: "No .commit.json found. Do you want to create a simple one ? [Yes/No]",
 		Items: []string{"Yes", "No"},
 	}
 	_, result, err := prompt.Run()

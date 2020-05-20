@@ -89,6 +89,5 @@ func CreateSample() bool {
 		log.Fatal("Cannot create .commit.json")
 	}
 
-	fmt.Printf("Succesfully created .commit.json file")
 	return true
 }
