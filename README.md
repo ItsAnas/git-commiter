@@ -22,7 +22,7 @@ go install .
  git init
  echo 'Bonjour' >> foo
  git add foo
- git-commit-configurator
+ git cmt
 ```
 <img src="https://github.com/ItsAnas/git-commit-configurator/raw/master/img/demo-commit.gif"/>
 
@@ -104,3 +104,9 @@ go install .
     ]
 }
 ```
+
+## License
+
+MIT licensed
+
+Copyright (c) 2020 Anas El Halouani
