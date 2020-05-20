@@ -7,12 +7,12 @@ import (
 	"os/exec"
 )
 
-// ParseCommitMessage fekopkp
+// ParseCommitMessage add the message Type following the real user message
 func parseCommitMessage(commitType string, input string) string {
 	return fmt.Sprintf("%s: %s", commitType, input)
 }
 
-// CommitMessage should
+// CommitMessage launch command to commit the message
 func CommitMessage(commitType string, input string) bool {
 	formattedMessage := parseCommitMessage(commitType, input)
 	myArguments := []string{"commit", "-m", formattedMessage}

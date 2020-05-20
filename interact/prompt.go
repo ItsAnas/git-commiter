@@ -10,7 +10,8 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
-// AskForCommit wesh
+// AskForCommit ask if the user wants to commit
+// and return true if so
 func AskForCommit() bool {
 	prompt := promptui.Select{
 		Label: "Do you want to commit ? [Yes/No]",
@@ -31,7 +32,7 @@ func getDescriptions(config jsonMapping.CommitConfig) []string {
 	return res
 }
 
-// AskForCommit wesh
+// AskCommitType ask which kind of commit the user wants
 func AskCommitType(config jsonMapping.CommitConfig) string {
 	descriptions := getDescriptions(config)
 	prompt := promptui.Select{
@@ -46,7 +47,8 @@ func AskCommitType(config jsonMapping.CommitConfig) string {
 	return config.Rules[index].Prefix
 }
 
-// AskForCommit wesh
+// AskForCommit ask if the user wants to create a sample file
+// and return true if so
 func AskForCreate() bool {
 	prompt := promptui.Select{
 		Label: "No .commit.json found. Do you want to create a simple one ? [Yes/No]",
@@ -59,7 +61,7 @@ func AskForCreate() bool {
 	return result == "Yes"
 }
 
-// AskMessage is blabla
+// AskMessage ask the user which message he wants to commits and return it
 func AskMessage() string {
 
 	validate := func(input string) error {

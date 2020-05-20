@@ -52,19 +52,20 @@ func DecodeJsonConfig(input string) CommitConfig {
 	return config
 }
 
+// CreateSample simple sample file for .commit.json
 func CreateSample() bool {
 	config := CommitConfig{
 		Name:        "My Config",
 		Description: "Hey this is my config for commit",
 		Rules: []PrefixRule{
-			PrefixRule{
+			{
 				Prefix:      "feat",
 				Description: "feat: Implement new feature"},
-			PrefixRule{
+			{
 				Prefix:      "doc",
 				Description: "doc: writing doc",
 			},
-			PrefixRule{
+			{
 				Prefix:      "fix",
 				Description: "fix: fix bug",
 			},
